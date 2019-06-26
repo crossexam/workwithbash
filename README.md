@@ -8,12 +8,12 @@ Work with Bash in Linux environment
 
 1. Find all files with specific extension:
 ```
-$(find ./ -name $fileExt)
+$(find ./ -name "$fileExt")
 
 ```
 It can go with `wc` to count all lines of all files with specific extension likes this:
 ```
-$(find ./ -name $fileExt) | xargs wc -l
+$(find ./ -name "$fileExt") | xargs wc -l
 
 ```
 
@@ -47,6 +47,14 @@ For reading content and save ouput to a variable we can simple do this:
 myVar=$(<./myFile)
 ```
 
+4. Concat variable and string:
+
+We can use template string like this:
+
+```
+"${protocol}google.com"
+```
+
 ## Shell scripts
 
 ### A. Something basic
@@ -68,6 +76,17 @@ echo "My second parameter: $2"
 # it should print myParameter2
 
 ```
+
+2. Loop by line or space in a text file:
+
+```
+values=$(<./textFile)
+# note: $values does not have double quote here
+for i in $values; do
+  echo "$i"
+done
+```
+
 
 ### B. Something magic when work with bash
 
